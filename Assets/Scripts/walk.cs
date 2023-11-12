@@ -61,16 +61,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveAlternative()
     {
+        float horizontalInputAbs = Mathf.Abs(Input.GetAxis("Horizontal"));
+        float verticalInputAbs = Mathf.Abs(Input.GetAxis("Vertical"));
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed * Time.deltaTime;
+        Vector3 movementAbs = new Vector3(horizontalInputAbs, 0f, verticalInputAbs) * moveSpeed * Time.deltaTime;
+
+        Debug.DrawRay(transform.position + new Vector3(0,1,0), movement * 30, Color.red);
 
         // Move the character
-        transform.Translate(movement);
+        transform.Translate(movementAbs);
 
         // Rotate the character to face the movement direction
-        if (movement.magnitude > 0)
+        if (movementAbs.magnitude > 0)
         {
             Quaternion targetRotation = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
