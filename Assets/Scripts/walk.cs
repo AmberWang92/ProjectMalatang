@@ -14,14 +14,23 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;    // Layer for detecting ground
 
     private bool isGrounded;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
-        // Check if the character is grounded
-        isGrounded = IsGrounded();
+        
 
         // Handle movement
-        Move();
+        //Move();
+        MoveAlternative();
+
+        // Check if the character is grounded
+        isGrounded = IsGrounded();
 
         // Handle jumping
         Jump();
@@ -50,13 +59,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void MoveAlternative()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed * Time.deltaTime;
+
+        // Move the character
+        transform.Translate(movement);
+
+        // Rotate the character to face the movement direction
+        if (movement.magnitude > 0)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        }
+    }
+
     private void Jump()
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             // Apply a jump force (you may need to adjust this depending on your setup)
-            Vector3 jumpVector = Vector3.up * jumpForce;
-            transform.Translate(jumpVector * Time.deltaTime);
+            rb.AddForce(Vector3.up * jumpForce);
         }
     }
 
@@ -66,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         float rayLength = 0.1f;
 
+        //Debug.Log("Inside function IsGrounded");
+        //Debug.DrawRay(transform.position, new Vector3(0, -rayLength, 0), Color.red);
         if (Physics.Raycast(transform.position, Vector3.down, out hit, rayLength, groundLayer))
         {
             return true;
