@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -940,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20298533, y: 0.000000022288042, z: -0.000000004620332, w: 0.9791818}
+  m_LocalRotation: {x: 0.20298533, y: -0.000000022288042, z: 0.000000004620332, w: 0.9791818}
   m_LocalPosition: {x: -8.227248, y: 4.356, z: -13.950912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1762,15 +1762,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1129876620254083739, guid: 340b2619965b84f70be7f1902ee6016a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18518813
+      value: 0.18518811
       objectReference: {fileID: 0}
     - target: {fileID: 1129876620254083739, guid: 340b2619965b84f70be7f1902ee6016a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -6.145097e-17
+      value: -0.000000029286838
       objectReference: {fileID: 0}
     - target: {fileID: 1129876620254083739, guid: 340b2619965b84f70be7f1902ee6016a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.1383114e-16
+      value: 0.0000000055190363
       objectReference: {fileID: 0}
     - target: {fileID: 5088359837674297134, guid: 340b2619965b84f70be7f1902ee6016a, type: 3}
       propertyPath: m_Name
@@ -1830,11 +1830,11 @@ PrefabInstance:
       objectReference: {fileID: 1503706405}
     - target: {fileID: 8088827594091083564, guid: 340b2619965b84f70be7f1902ee6016a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016848176
+      value: -0.000000016848176
       objectReference: {fileID: 0}
     - target: {fileID: 8088827594091083564, guid: 340b2619965b84f70be7f1902ee6016a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000034926426
+      value: 0.0000000034926426
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1846,8 +1846,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 963194228}
+  - {fileID: 1404494182943422320}
   - {fileID: 705507995}
   - {fileID: 1538700331}
-  - {fileID: 1404494182943422320}
   - {fileID: 1511292764}
   - {fileID: 548877797}
