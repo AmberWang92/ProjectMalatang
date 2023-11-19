@@ -21,12 +21,16 @@ public class counteringridients : MonoBehaviour
 
     public void IncreaseIngr(int v)
     {
-        currentIngr += v; 
-        UpdateIngrText(); 
+        currentIngr += v;
+        UpdateIngrText();
+        Debug.Log("Ingredients increased. Current count: " + currentIngr);
     }
+
 
     void UpdateIngrText()
     {
+        Debug.Log("Updating ingredient count: " + currentIngr);
         ingrText.text = "Ingredients: " + currentIngr.ToString();
     }
+
 }

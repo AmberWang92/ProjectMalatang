@@ -1,29 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public int scoreValue = 1;
+    public string itemName;
+    public GameObject collectEffect;
+    public int scoreValue = 1; 
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Collect();
+            Debug.Log("Player entered trigger zone"); 
+            Collect(other.GetComponent<PlayerInventory>());
         }
     }
 
-    void Collect()
+    void Collect(PlayerInventory playerInventory)
     {
-       
-        counteringridients ingredientCounter = counteringridients.instance;
-
-        if (ingredientCounter != null)
+        if (playerInventory != null)
         {
-            ingredientCounter.IncreaseIngr(1); 
-        }
+            Debug.Log("Collecting item: " + itemName);
+            playerInventory.AddItem(itemName);  // Pass the itemName string instead of 'this'
 
-        Destroy(gameObject);
+            if (collectEffect != null)
+            {
+                Instantiate(collectEffect, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
+        }
     }
+
+
 }
+
