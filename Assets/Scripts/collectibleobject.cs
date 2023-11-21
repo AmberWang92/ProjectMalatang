@@ -8,10 +8,9 @@ public class Collectible : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger zone");
+            //Debug.Log("Player entered trigger zone");
             Collect(other.GetComponent<PlayerInventory>());
         }
     }
