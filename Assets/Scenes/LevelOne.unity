@@ -326,6 +326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d2be0a87f2a7b49b9d89b6060c4b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  section:
+  - {fileID: 1350285578}
+  - {fileID: 482964781}
+  - {fileID: 422206477}
+  zPos: 50
+  creatingSection: 0
+  secNum: 0
 --- !u!1001 &43567048
 PrefabInstance:
   m_ObjectHideFlags: 0
