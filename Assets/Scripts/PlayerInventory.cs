@@ -3,17 +3,14 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public static PlayerInventory instance; // Add this line
-
     private List<string> collectedItems = new List<string>();
 
     public ItemSlot[] itemSlot;
-
-    void Awake()
-    {
-        instance = this; // Add this line
-    }
-
+    // [SerializeField] private InventoryManager inventoryManager;
+    // void Start()
+    // {
+    //     inventoryManager = GameObject.Find("UI collected items").GetComponent<InventoryManager>();
+    // }
     public void AddItem(string itemName)
     {
         Debug.Log("itemSlot Length: " + itemSlot.Length);
@@ -27,6 +24,9 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
         }
+        // Update our model of collected items
+        // collectedItems.Add(itemName);
+        // Update the UI to show collected items
     }
 
     public bool HasItem(string itemName)

@@ -1,16 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class counteringridients : MonoBehaviour
 {
-    public static counteringridients instance; // Add this line
-
+    public static counteringridients instance;
     public TMP_Text ingrText;
     public int currentIngr = 0;
 
     void Awake()
     {
-        instance = this; // Add this line
+        instance = this;
     }
 
     void Start()
@@ -25,6 +26,7 @@ public class counteringridients : MonoBehaviour
         Debug.Log("Ingredients increased. Current count: " + currentIngr);
     }
 
+
     public void DecreaseIngr(int v)
     {
         currentIngr -= v;
@@ -32,8 +34,10 @@ public class counteringridients : MonoBehaviour
         Debug.Log("Ingredients decreased. Current count: " + currentIngr);
     }
 
+
     void UpdateIngrText()
     {
         ingrText.text = "Ingredients: " + currentIngr.ToString();
     }
+
 }

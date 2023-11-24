@@ -1,8 +1,10 @@
+// PlayerInteraction script
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public CookingPotScript cookingPot;
+    public PlayerInventory playerInventory;
     public float interactionDistance = 2f;
 
     void Update()
@@ -23,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
             // Check if the player is within the interaction distance of the pot
             if (Vector3.Distance(playerGameObject.transform.position, cookingPot.transform.position) <= interactionDistance)
             {
-                cookingPot.CookMalatang(PlayerInventory.instance); // Pass the PlayerInventory instance
+                cookingPot.CookMalatang(playerInventory);
             }
             else
             {

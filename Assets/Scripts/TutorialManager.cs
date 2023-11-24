@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     private enum TutorialState
     {
         Welcome,
+        RightClickToProceed,
         FindIngredients,
         GoodFindRestIngredients,
         ComeToCookingPot,
@@ -17,7 +18,6 @@ public class TutorialManager : MonoBehaviour
     }
 
     private TutorialState currentState;
-    private int ingredientsFound = 0;
 
     void Start()
     {
@@ -27,28 +27,10 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
+        // Check for right-click to proceed to the next tutorial message
         if (Input.GetMouseButtonDown(1))
         {
             NextTutorialState();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ingredientsFound++;
-
-            if (currentState == TutorialState.FindIngredients && ingredientsFound == 1)
-            {
-                currentState = TutorialState.GoodFindRestIngredients;
-            }
-            else if (currentState == TutorialState.GoodFindRestIngredients && ingredientsFound == 3)
-            {
-                currentState = TutorialState.ComeToCookingPot;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && currentState == TutorialState.ComeToCookingPot)
-        {
-            currentState = TutorialState.CookingMalatang;
         }
     }
 
@@ -58,6 +40,9 @@ public class TutorialManager : MonoBehaviour
         {
             case TutorialState.Welcome:
                 ShowMessage("Welcome to Malatang Mayhem! It is a game where you need to gather ingredients and cook Malatang!");
+                break;
+            case TutorialState.RightClickToProceed:
+                ShowMessage("Press right-click to proceed.");
                 break;
             case TutorialState.FindIngredients:
                 ShowMessage("Find ingredients for your Malatang.");
@@ -69,15 +54,17 @@ public class TutorialManager : MonoBehaviour
                 ShowMessage("Come to the cooking pot and press E to start cooking Malatang.");
                 break;
             case TutorialState.CookingMalatang:
-                ShowMessage("Cooking Malatang... Tutorial completed!");
-                tutorialPanel.SetActive(false);
+                ShowMessage("Cooking Malatang...");
+                break;
+            case TutorialState.Completed:
+                tutorialPanel.SetActive(false); // Hide the tutorial panel when the tutorial is completed
                 break;
         }
     }
 
     void ShowMessage(string message)
     {
-        tutorialText.text = message + " Right click to skip.";
+        tutorialText.text = message;
         tutorialPanel.SetActive(true);
     }
 
@@ -86,19 +73,30 @@ public class TutorialManager : MonoBehaviour
         switch (currentState)
         {
             case TutorialState.Welcome:
+                currentState = TutorialState.RightClickToProceed;
+                break;
+            case TutorialState.RightClickToProceed:
                 currentState = TutorialState.FindIngredients;
                 break;
             case TutorialState.FindIngredients:
-                // Progress to the next state when the first ingredient is found (handled in the Update method)
+                // Simulate collecting a collectible (you can replace this with your actual logic)
+                // For demonstration purposes, transition to the next state immediately
+                currentState = TutorialState.GoodFindRestIngredients;
                 break;
             case TutorialState.GoodFindRestIngredients:
-                // Progress to the next state when the required number of ingredients is found (handled in the Update method)
+                // Simulate collecting the remaining collectibles
+                // For demonstration purposes, transition to the next state immediately
+                currentState = TutorialState.ComeToCookingPot;
                 break;
             case TutorialState.ComeToCookingPot:
-                // Progress to the next state when the player presses 'E' (handled in the Update method)
+                // Simulate reaching the cooking pot
+                // For demonstration purposes, transition to the next state immediately
+                currentState = TutorialState.CookingMalatang;
                 break;
             case TutorialState.CookingMalatang:
-                // No further progression after completing the tutorial
+                // Simulate the cooking process (you can replace this with your actual logic)
+                // For demonstration purposes, transition to the next state immediately
+                currentState = TutorialState.Completed;
                 break;
         }
 
