@@ -4,13 +4,13 @@ public class Collectible : MonoBehaviour
 {
     public string itemName;
     public GameObject collectEffect;
-    public int scoreValue = 1; 
+    public int scoreValue = 1;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger zone"); 
+            //Debug.Log("Player entered trigger zone");
             Collect(other.GetComponent<PlayerInventory>());
         }
     }
@@ -28,6 +28,7 @@ public class Collectible : MonoBehaviour
             }
 
             Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

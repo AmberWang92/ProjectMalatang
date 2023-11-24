@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/kenney_ui-pack/Vector/UIpack_vector.swf.meta
+guid: 5f77b748a2d9a48febbe81a7af5ab4e0
+========
 guid: 05cb9f60f21dd4442a0ba418d669b328
 folderAsset: yes
+>>>>>>>> main:Assets/Characters.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -27,7 +27,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         UpdateCharacter();
     }
 
@@ -48,7 +48,7 @@ public class CharacterMovement : MonoBehaviour
             if (playerIsGrounded)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-                Debug.Log("Jumping");
+                //Debug.Log("Jumping");
             }
         }
 
