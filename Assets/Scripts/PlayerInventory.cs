@@ -3,14 +3,21 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private List<string> collectedItems = new List<string>();
+    // Making collectedItems public
+    public List<string> collectedItems = new List<string>();
 
     public ItemSlot[] itemSlot;
-    // [SerializeField] private InventoryManager inventoryManager;
-    // void Start()
-    // {
-    //     inventoryManager = GameObject.Find("UI collected items").GetComponent<InventoryManager>();
-    // }
+
+    // ... (other existing code)
+
+    public List<string> GetCollectedItems()
+    {
+        List<string> collectedItemsList = new List<string>(collectedItems);
+        Debug.Log("Collected Items: " + string.Join(", ", collectedItemsList));
+        return collectedItemsList;
+    }
+
+
     public void AddItem(string itemName)
     {
         Debug.Log("itemSlot Length: " + itemSlot.Length);
@@ -20,13 +27,11 @@ public class PlayerInventory : MonoBehaviour
             if (itemSlot[i].isFull == false)
             {
                 itemSlot[i].AddItem(itemName);
+                collectedItems.Add(itemName); // Adding item to collectedItems
                 counteringridients.instance.IncreaseIngr(1);
                 return;
             }
         }
-        // Update our model of collected items
-        // collectedItems.Add(itemName);
-        // Update the UI to show collected items
     }
 
     public bool HasItem(string itemName)

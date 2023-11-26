@@ -35,23 +35,13 @@ public class ItemSlot : MonoBehaviour
             itemImage.sprite = leekSprite;
             itemImage.enabled = true;
         }
+    }
 
-        // switch (itemName)
-        // {
-        //     case "apple":
-        //         itemImage.sprite = appleSprite;
-        //         itemImage.enabled = true;
-        //         break;
-        //     case "carrot":
-        //         itemImage.sprite = carrotSprite;
-        //         itemImage.enabled = true;
-        //         break;
-        //     case "leek":
-        //         itemImage.sprite = leekSprite;
-        //         itemImage.enabled = true;
-        //         break;
-        //     default:
-        //         break;
-        // }
+    public void RemoveItem()
+    {
+        itemName = string.Empty;
+        isFull = false;
+        itemImage.sprite = null;
+        itemImage.enabled = false;
     }
 }

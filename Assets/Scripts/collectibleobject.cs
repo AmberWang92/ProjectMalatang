@@ -3,35 +3,33 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public string itemName;
-    public GameObject collectEffect;
-    public int scoreValue = 1;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Player entered trigger zone");
-            Collect(other.GetComponent<PlayerInventory>());
-        }
-    }
+            PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
 
-    void Collect(PlayerInventory playerInventory)
-    {
-        if (playerInventory != null)
-        {
-            Debug.Log("Collecting item: " + itemName);
-            playerInventory.AddItem(itemName);  // Pass the itemName string instead of 'this'
-
-            if (collectEffect != null)
+            if (playerInventory != null)
             {
-                Instantiate(collectEffect, transform.position, Quaternion.identity);
-            }
+                Debug.Log("Collecting item: " + itemName);
 
-            Destroy(gameObject);
-            gameObject.SetActive(false);
+                // Add the item to the player's inventory
+                playerInventory.AddItem(itemName);
+
+                // Verify that the item is in the player's inventory
+                if (playerInventory.HasItem(itemName))
+                {
+                    Debug.Log("Item successfully added to the inventory: " + itemName);
+                }
+                else
+                {
+                    Debug.LogError("Failed to add item to the inventory: " + itemName);
+                }
+
+                // Destroy the collectible object
+                Destroy(gameObject);
+            }
         }
     }
-
-
 }
-
