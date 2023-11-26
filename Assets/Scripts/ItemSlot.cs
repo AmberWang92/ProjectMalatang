@@ -10,6 +10,7 @@ public class ItemSlot : MonoBehaviour
     public Sprite appleSprite;
     public Sprite carrotSprite;
     public Sprite leekSprite;
+    public Sprite cabbageSprite;
     public bool isFull;
 
     //========ITEM SLOT========//
@@ -35,13 +36,28 @@ public class ItemSlot : MonoBehaviour
             itemImage.sprite = leekSprite;
             itemImage.enabled = true;
         }
-    }
+        else if (itemName == "cabbage")
+        {
+            itemImage.sprite = cabbageSprite;
+            itemImage.enabled = true;
+        }
 
-    public void RemoveItem()
-    {
-        itemName = string.Empty;
-        isFull = false;
-        itemImage.sprite = null;
-        itemImage.enabled = false;
+        // switch (itemName)
+        // {
+        //     case "apple":
+        //         itemImage.sprite = appleSprite;
+        //         itemImage.enabled = true;
+        //         break;
+        //     case "carrot":
+        //         itemImage.sprite = carrotSprite;
+        //         itemImage.enabled = true;
+        //         break;
+        //     case "leek":
+        //         itemImage.sprite = leekSprite;
+        //         itemImage.enabled = true;
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 }
