@@ -10,6 +10,7 @@ public class ItemSlot : MonoBehaviour
     public Sprite appleSprite;
     public Sprite carrotSprite;
     public Sprite leekSprite;
+    public Sprite cabbageSprite;
     public bool isFull;
 
     //========ITEM SLOT========//
@@ -33,6 +34,11 @@ public class ItemSlot : MonoBehaviour
         else if (itemName == "leek")
         {
             itemImage.sprite = leekSprite;
+            itemImage.enabled = true;
+        }
+        else if (itemName == "cabbage")
+        {
+            itemImage.sprite = cabbageSprite;
             itemImage.enabled = true;
         }
 

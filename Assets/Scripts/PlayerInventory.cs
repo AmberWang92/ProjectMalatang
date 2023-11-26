@@ -17,20 +17,26 @@ public class PlayerInventory : MonoBehaviour
 
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].isFull == false)
+            // We check if slot 'i' is available
+            if (!itemSlot[i].isFull)
             {
+                // Update our model of collected items
+                collectedItems.Add(itemName);
+
+                // Update information for our UI inventory panel
                 itemSlot[i].AddItem(itemName);
+
+                // Update UI counter
                 counteringridients.instance.IncreaseIngr(1);
                 return;
             }
         }
-        // Update our model of collected items
-        // collectedItems.Add(itemName);
-        // Update the UI to show collected items
+
     }
 
     public bool HasItem(string itemName)
     {
+        Debug.Log("collected items: " + collectedItems);
         return collectedItems.Contains(itemName);
     }
 
