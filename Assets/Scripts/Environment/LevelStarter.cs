@@ -9,7 +9,8 @@ public class LevelStarter : MonoBehaviour
     public GameObject countDown1;
     public GameObject countDownGo;
     public GameObject fadeIn;
-   
+    public AudioSource readyFX;
+    public AudioSource goFX;
     void Start()
     {
         StartCoroutine(CountSequence());
@@ -19,11 +20,15 @@ public class LevelStarter : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         countDown3.SetActive(true);
+        readyFX.Play();
         yield return new WaitForSeconds(1);
         countDown2.SetActive(true);
+        readyFX.Play();
         yield return new WaitForSeconds (1);
         countDown1.SetActive(true);
+        readyFX.Play();
         yield return new WaitForSeconds(1);
         countDownGo.SetActive(true);
+        goFX.Play();
     }
 }
