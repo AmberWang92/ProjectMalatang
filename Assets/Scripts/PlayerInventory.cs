@@ -5,8 +5,8 @@ public class PlayerInventory : MonoBehaviour
 {
     // Making collectedItems public
     public List<string> collectedItems = new List<string>();
-
     public ItemSlot[] itemSlot;
+    public TutorialManager tutorialManager; // Reference to the TutorialManager
 
     // ... (other existing code)
 
@@ -16,7 +16,6 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log("Collected Items: " + string.Join(", ", collectedItemsList));
         return collectedItemsList;
     }
-
 
     public void AddItem(string itemName)
     {
@@ -29,6 +28,13 @@ public class PlayerInventory : MonoBehaviour
                 itemSlot[i].AddItem(itemName);
                 collectedItems.Add(itemName); // Adding item to collectedItems
                 counteringridients.instance.IncreaseIngr(1);
+
+                // Notify the TutorialManager about the added item
+                if (tutorialManager != null)
+                {
+                    tutorialManager.IngredientFound();
+                }
+
                 return;
             }
         }
@@ -44,4 +50,6 @@ public class PlayerInventory : MonoBehaviour
         collectedItems.Remove(itemName);
         counteringridients.instance.DecreaseIngr(1);
     }
+
+    // ... (other existing code)
 }

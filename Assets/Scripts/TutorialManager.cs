@@ -5,6 +5,7 @@ public class TutorialManager : MonoBehaviour
 {
     public TextMeshProUGUI tutorialText;
     public GameObject tutorialPanel;
+    public PlayerInventory playerInventory; // Reference to the PlayerInventory
 
     private enum TutorialState
     {
@@ -18,6 +19,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     private TutorialState currentState;
+    private int ingredientsFound = 0;
 
     void Start()
     {
@@ -39,10 +41,7 @@ public class TutorialManager : MonoBehaviour
         switch (currentState)
         {
             case TutorialState.Welcome:
-                ShowMessage("Welcome to Malatang Mayhem! It is a game where you need to gather ingredients and cook Malatang!");
-                break;
-            case TutorialState.RightClickToProceed:
-                ShowMessage("Press right-click to proceed.");
+                ShowMessage("Welcome to Malatang Mayhem! It is a game where you need to gather ingredients and cook Malatang.");
                 break;
             case TutorialState.FindIngredients:
                 ShowMessage("Find ingredients for your Malatang.");
@@ -70,6 +69,8 @@ public class TutorialManager : MonoBehaviour
 
     void NextTutorialState()
     {
+        Debug.Log("Current State: " + currentState);
+
         switch (currentState)
         {
             case TutorialState.Welcome:
@@ -79,19 +80,25 @@ public class TutorialManager : MonoBehaviour
                 currentState = TutorialState.FindIngredients;
                 break;
             case TutorialState.FindIngredients:
-                // Simulate collecting a collectible (you can replace this with your actual logic)
-                // For demonstration purposes, transition to the next state immediately
-                currentState = TutorialState.GoodFindRestIngredients;
+                // Check if all ingredients are found to transition to the next state
+                if (ingredientsFound >= 3)
+                {
+                    currentState = TutorialState.GoodFindRestIngredients;
+                }
                 break;
             case TutorialState.GoodFindRestIngredients:
-                // Simulate collecting the remaining collectibles
-                // For demonstration purposes, transition to the next state immediately
-                currentState = TutorialState.ComeToCookingPot;
+                // Check if all ingredients are found to transition to the next state
+                if (ingredientsFound >= 3)
+                {
+                    currentState = TutorialState.ComeToCookingPot;
+                }
                 break;
             case TutorialState.ComeToCookingPot:
-                // Simulate reaching the cooking pot
-                // For demonstration purposes, transition to the next state immediately
-                currentState = TutorialState.CookingMalatang;
+                // Check if all ingredients are found to transition to the next state
+                if (ingredientsFound >= 3)
+                {
+                    currentState = TutorialState.CookingMalatang;
+                }
                 break;
             case TutorialState.CookingMalatang:
                 // Simulate the cooking process (you can replace this with your actual logic)
@@ -100,6 +107,13 @@ public class TutorialManager : MonoBehaviour
                 break;
         }
 
+        Debug.Log("Next State: " + currentState);
         ShowCurrentTutorialMessage();
+    }
+
+    // Call this method when the player finds an ingredient
+    public void IngredientFound()
+    {
+        ingredientsFound++;
     }
 }
