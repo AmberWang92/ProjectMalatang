@@ -9,6 +9,7 @@ public class CollectFood : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         foodFX.Play();
+        CollectibleControl.appleCount += 1;
         this.gameObject.SetActive(false);
     }
 }

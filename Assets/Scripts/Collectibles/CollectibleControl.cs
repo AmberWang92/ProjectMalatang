@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class CollectibleControl : MonoBehaviour
 {
-    public static int foodCount;
-    public GameObject foodCountDisplay;
+    public static int appleCount;
+    public GameObject appleCountDisplay;
 
     // Update is called once per frame
     void Update()
     {
-        foodCountDisplay.GetComponent<Text>().text = "+ foodCount";
+        appleCountDisplay.GetComponent<Text>().text = "" + appleCount;
+
     }
 }
