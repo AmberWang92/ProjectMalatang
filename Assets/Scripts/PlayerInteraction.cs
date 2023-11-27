@@ -1,4 +1,4 @@
-// PlayerInteraction script
+
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -17,12 +17,13 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryInteractWithCookingPot()
     {
-        // Find the player GameObject with the "Player" tag
+      
         GameObject playerGameObject = GameObject.FindWithTag("Player");
 
         if (playerGameObject != null)
         {
-            // Check if the player is within the interaction distance of the pot
+           
+           
             if (Vector3.Distance(playerGameObject.transform.position, cookingPot.transform.position) <= interactionDistance)
             {
                 cookingPot.CookMalatang(playerInventory);

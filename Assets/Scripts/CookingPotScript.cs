@@ -1,10 +1,14 @@
-// CookingPotScript
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CookingPotScript : MonoBehaviour
 {
     public List<string> requiredIngredients;
+
+    [SerializeField]
+    private GameObject fullMalatangModel; 
+
+    private bool isCooking = false;
 
     public bool HasIngredients(PlayerInventory playerInventory)
     {
@@ -51,10 +55,25 @@ public class CookingPotScript : MonoBehaviour
             {
                 playerInventory.RemoveItem(ingredient);
             }
+
+           
+           
+            if (fullMalatangModel != null)
+            {
+                fullMalatangModel.SetActive(true);
+                Debug.Log("Full Malatang Model activated!");
+            }
+            else
+            {
+                Debug.LogError("Full Malatang Model is null!");
+            }
+
+            isCooking = true;
         }
         else
         {
             Debug.Log("Not enough ingredients to cook Malatang.");
         }
     }
+
 }

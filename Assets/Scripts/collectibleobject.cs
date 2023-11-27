@@ -14,10 +14,10 @@ public class Collectible : MonoBehaviour
             {
                 Debug.Log("Collecting item: " + itemName);
 
-                // Add the item to the player's inventory
+            
                 playerInventory.AddItem(itemName);
 
-                // Verify that the item is in the player's inventory
+               
                 if (playerInventory.HasItem(itemName))
                 {
                     Debug.Log("Item successfully added to the inventory: " + itemName);
@@ -27,7 +27,8 @@ public class Collectible : MonoBehaviour
                     Debug.LogError("Failed to add item to the inventory: " + itemName);
                 }
 
-                // Destroy the collectible object
+              
+              
                 Destroy(gameObject);
             }
         }

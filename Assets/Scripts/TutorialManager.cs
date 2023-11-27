@@ -4,17 +4,13 @@ using TMPro;
 public class TutorialManager : MonoBehaviour
 {
     public TextMeshProUGUI tutorialText;
-    public GameObject tutorialPanel;
-    public PlayerInventory playerInventory; // Reference to the PlayerInventory
+    public Canvas tutorialCanvas; 
+    public PlayerInventory playerInventory; 
 
     private enum TutorialState
     {
         Welcome,
-        RightClickToProceed,
         FindIngredients,
-        GoodFindRestIngredients,
-        ComeToCookingPot,
-        CookingMalatang,
         Completed
     }
 
@@ -29,8 +25,8 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
-        // Check for right-click to proceed to the next tutorial message
-        if (Input.GetMouseButtonDown(1))
+        
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             NextTutorialState();
         }
@@ -41,22 +37,13 @@ public class TutorialManager : MonoBehaviour
         switch (currentState)
         {
             case TutorialState.Welcome:
-                ShowMessage("Welcome to Malatang Mayhem! It is a game where you need to gather ingredients and cook Malatang.");
+                ShowMessage("Welcome to Malatang Mayhem! It is a game where you need to gather ingredients and cook Malatang. Press Q to continue.");
                 break;
             case TutorialState.FindIngredients:
-                ShowMessage("Find ingredients for your Malatang.");
-                break;
-            case TutorialState.GoodFindRestIngredients:
-                ShowMessage("Good! Now go and find the remaining 2 ingredients.");
-                break;
-            case TutorialState.ComeToCookingPot:
-                ShowMessage("Come to the cooking pot and press E to start cooking Malatang.");
-                break;
-            case TutorialState.CookingMalatang:
-                ShowMessage("Cooking Malatang...");
+                ShowMessage("Find ingredients for your Malatang, then find cooking pot and press E to cook.");
                 break;
             case TutorialState.Completed:
-                tutorialPanel.SetActive(false); // Hide the tutorial panel when the tutorial is completed
+                HideTutorialCanvas();
                 break;
         }
     }
@@ -64,7 +51,12 @@ public class TutorialManager : MonoBehaviour
     void ShowMessage(string message)
     {
         tutorialText.text = message;
-        tutorialPanel.SetActive(true);
+        tutorialCanvas.gameObject.SetActive(!string.IsNullOrEmpty(message));
+    }
+
+    void HideTutorialCanvas()
+    {
+        tutorialCanvas.gameObject.SetActive(false);
     }
 
     void NextTutorialState()
@@ -74,36 +66,13 @@ public class TutorialManager : MonoBehaviour
         switch (currentState)
         {
             case TutorialState.Welcome:
-                currentState = TutorialState.RightClickToProceed;
-                break;
-            case TutorialState.RightClickToProceed:
                 currentState = TutorialState.FindIngredients;
                 break;
             case TutorialState.FindIngredients:
-                // Check if all ingredients are found to transition to the next state
-                if (ingredientsFound >= 3)
-                {
-                    currentState = TutorialState.GoodFindRestIngredients;
-                }
-                break;
-            case TutorialState.GoodFindRestIngredients:
-                // Check if all ingredients are found to transition to the next state
-                if (ingredientsFound >= 3)
-                {
-                    currentState = TutorialState.ComeToCookingPot;
-                }
-                break;
-            case TutorialState.ComeToCookingPot:
-                // Check if all ingredients are found to transition to the next state
-                if (ingredientsFound >= 3)
-                {
-                    currentState = TutorialState.CookingMalatang;
-                }
-                break;
-            case TutorialState.CookingMalatang:
-                // Simulate the cooking process (you can replace this with your actual logic)
-                // For demonstration purposes, transition to the next state immediately
                 currentState = TutorialState.Completed;
+                break;
+            case TutorialState.Completed:
+                HideTutorialCanvas();
                 break;
         }
 
@@ -111,9 +80,15 @@ public class TutorialManager : MonoBehaviour
         ShowCurrentTutorialMessage();
     }
 
-    // Call this method when the player finds an ingredient
+  
     public void IngredientFound()
     {
         ingredientsFound++;
+
+       
+        if (currentState == TutorialState.FindIngredients && ingredientsFound >= 3)
+        {
+            NextTutorialState();
+        }
     }
 }
