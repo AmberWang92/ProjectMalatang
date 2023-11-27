@@ -14,7 +14,6 @@ public class PlayerInventory : MonoBehaviour
     public void AddItem(string itemName)
     {
         Debug.Log("itemSlot Length: " + itemSlot.Length);
-
         for (int i = 0; i < itemSlot.Length; i++)
         {
             // We check if slot 'i' is available
@@ -31,7 +30,6 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
         }
-
     }
 
     public bool HasItem(string itemName)

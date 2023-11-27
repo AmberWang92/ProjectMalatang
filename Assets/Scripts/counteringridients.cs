@@ -37,7 +37,7 @@ public class counteringridients : MonoBehaviour
 
     void UpdateIngrText()
     {
-        ingrText.text = "Ingredients: " + currentIngr.ToString();
+        //ingrText.text = "Ingredients: " + currentIngr.ToString();
     }
 
 }
