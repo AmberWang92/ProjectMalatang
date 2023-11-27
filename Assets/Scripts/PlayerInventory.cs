@@ -3,45 +3,40 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    // Making collectedItems public
-    public List<string> collectedItems = new List<string>();
+    private List<string> collectedItems = new List<string>();
+
     public ItemSlot[] itemSlot;
-    public TutorialManager tutorialManager; // Reference to the TutorialManager
-
-    // ... (other existing code)
-
-    public List<string> GetCollectedItems()
-    {
-        List<string> collectedItemsList = new List<string>(collectedItems);
-        Debug.Log("Collected Items: " + string.Join(", ", collectedItemsList));
-        return collectedItemsList;
-    }
-
+    // [SerializeField] private InventoryManager inventoryManager;
+    // void Start()
+    // {
+    //     inventoryManager = GameObject.Find("UI collected items").GetComponent<InventoryManager>();
+    // }
     public void AddItem(string itemName)
     {
         Debug.Log("itemSlot Length: " + itemSlot.Length);
 
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].isFull == false)
+            // We check if slot 'i' is available
+            if (!itemSlot[i].isFull)
             {
+                // Update our model of collected items
+                collectedItems.Add(itemName);
+
+                // Update information for our UI inventory panel
                 itemSlot[i].AddItem(itemName);
-                collectedItems.Add(itemName); // Adding item to collectedItems
+
+                // Update UI counter
                 counteringridients.instance.IncreaseIngr(1);
-
-                // Notify the TutorialManager about the added item
-                if (tutorialManager != null)
-                {
-                    tutorialManager.IngredientFound();
-                }
-
                 return;
             }
         }
+
     }
 
     public bool HasItem(string itemName)
     {
+        Debug.Log("collected items: " + collectedItems);
         return collectedItems.Contains(itemName);
     }
 
@@ -50,6 +45,4 @@ public class PlayerInventory : MonoBehaviour
         collectedItems.Remove(itemName);
         counteringridients.instance.DecreaseIngr(1);
     }
-
-    // ... (other existing code)
 }
