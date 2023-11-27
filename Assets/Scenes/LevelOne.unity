@@ -6327,7 +6327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePlayer: {fileID: 1371478742}
-  charMode1: {fileID: 0}
+  charMode1: {fileID: 7633038961571893455}
 --- !u!1001 &629064410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16431,6 +16431,7 @@ GameObject:
   - component: {fileID: 1774442891}
   - component: {fileID: 1774442890}
   - component: {fileID: 1774442889}
+  - component: {fileID: 1774442892}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16512,6 +16513,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4349678493574782235}
   m_LocalEulerAnglesHint: {x: 7.47, y: 0, z: 0}
+--- !u!95 &1774442892
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774442888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de8c8b480fbff44429dedba3da529dc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1786532857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22959,7 +22981,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: de8c8b480fbff44429dedba3da529dc7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
