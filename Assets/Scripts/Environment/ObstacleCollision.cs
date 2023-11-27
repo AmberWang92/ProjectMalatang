@@ -12,7 +12,7 @@ public class ObstacleCollision : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        thePlayer.GetComponent<PlayerMove>().enabled = false;
+        thePlayer.GetComponent<CharacterMove>().enabled = false;
         charMode1.GetComponent<Animator>().Play("Stumble Backwards");
         crashSound.Play();
         mainCam.GetComponent<Animator>().enabled = true;

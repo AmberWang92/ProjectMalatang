@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovent : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
