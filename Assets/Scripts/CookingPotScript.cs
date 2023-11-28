@@ -5,41 +5,75 @@ public class CookingPotScript : MonoBehaviour
 {
     public List<string> requiredIngredients;
 
-    // This method checks if the required ingredients are present in the player's inventory.
+    [SerializeField]
+    private GameObject fullMalatangModel; 
+
+    private bool isCooking = false;
+
     public bool HasIngredients(PlayerInventory playerInventory)
     {
         if (playerInventory != null)
         {
+            Debug.Log("Required Ingredients: " + string.Join(", ", requiredIngredients));
+
             foreach (string ingredient in requiredIngredients)
             {
                 if (!playerInventory.HasItem(ingredient))
                 {
+                    Debug.Log("Missing ingredient: " + ingredient);
                     return false;
                 }
             }
+            Debug.Log("All ingredients found!");
             return true;
         }
 
         return false;
     }
 
-    // This method is called when the player tries to cook Malatang.
     public void CookMalatang(PlayerInventory playerInventory)
     {
+        Debug.Log("Checking ingredients before cooking:");
+
+        foreach (string ingredient in requiredIngredients)
+        {
+            Debug.Log("Required Ingredient: " + ingredient);
+        }
+
+        Debug.Log("Player's Inventory Ingredients:");
+
+        foreach (string ingredient in playerInventory.GetCollectedItems())
+        {
+            Debug.Log("Inventory Ingredient: " + ingredient);
+        }
+
         if (playerInventory != null && HasIngredients(playerInventory))
         {
-            // Implement cooking logic here
             Debug.Log("Malatang is cooking!");
 
-            // Reset or consume the ingredients in the player's inventory as needed
             foreach (string ingredient in requiredIngredients)
             {
                 playerInventory.RemoveItem(ingredient);
             }
+
+           
+           
+            if (fullMalatangModel != null)
+            {
+                fullMalatangModel.SetActive(true);
+                Debug.Log("Full Malatang Model activated!");
+            }
+            else
+            {
+                Debug.LogError("Full Malatang Model is null!");
+            }
+
+            isCooking = true;
         }
         else
         {
             Debug.Log("Not enough ingredients to cook Malatang.");
         }
     }
+
 }
