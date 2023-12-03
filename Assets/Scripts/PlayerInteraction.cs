@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -17,13 +16,13 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryInteractWithCookingPot()
     {
-      
+
         GameObject playerGameObject = GameObject.FindWithTag("Player");
 
         if (playerGameObject != null)
         {
-           
-           
+
+
             if (Vector3.Distance(playerGameObject.transform.position, cookingPot.transform.position) <= interactionDistance)
             {
                 cookingPot.CookMalatang(playerInventory);

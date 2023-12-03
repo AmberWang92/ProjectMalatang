@@ -6,7 +6,7 @@ public class CookingPotScript : MonoBehaviour
     public List<string> requiredIngredients;
 
     [SerializeField]
-    private GameObject fullMalatangModel; 
+    private GameObject fullMalatangModel;
 
     private bool isCooking = false;
 
@@ -51,13 +51,14 @@ public class CookingPotScript : MonoBehaviour
         {
             Debug.Log("Malatang is cooking!");
 
+            // We remove all the ingredients from the player inventory
             foreach (string ingredient in requiredIngredients)
             {
                 playerInventory.RemoveItem(ingredient);
             }
 
-           
-           
+
+            // display the full malatang model if it exits
             if (fullMalatangModel != null)
             {
                 fullMalatangModel.SetActive(true);
@@ -68,12 +69,20 @@ public class CookingPotScript : MonoBehaviour
                 Debug.LogError("Full Malatang Model is null!");
             }
 
+            // player win the game
             isCooking = true;
         }
         else
         {
             Debug.Log("Not enough ingredients to cook Malatang.");
         }
+    }
+
+
+
+    public bool IsPlayerCooking()
+    {
+        return isCooking;
     }
 
 }
