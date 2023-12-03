@@ -12,34 +12,66 @@ public class CharacterMove : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded = true;
+    static public bool canMove = false;
+    public GameObject playerObject;
 
-    private void Start()
+
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
 
-    private void Update()
+    void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        MovePlayer();
+        CheckJump();
+    }
 
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput) * moveSpeed * Time.deltaTime;
+    void MovePlayer()
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+
+        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput).normalized * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(transform.position + movement);
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+    void CheckJump()
+    {
+        if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
+            Jump();
+            playerObject.GetComponent<Animator>().Play("Jump");
+
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isGrounded = false;
+       
+    }
+
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
     }
+    IEnumerator AddHorizontalForce()
+    {
+        yield return new WaitForSeconds(0.1f); 
+
+        if (canMove)
+        {
+            rb.AddForce(transform.forward * moveSpeed * 0.5f, ForceMode.Impulse); 
+        }
+    }
 }
+
+
 
 
