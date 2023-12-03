@@ -765,6 +765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.59
@@ -779,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.9
+      value: -18.8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5406,6 +5410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -8318,6 +8326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
@@ -8873,6 +8885,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_Name
       value: Terrain_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalScale.y
@@ -13931,12 +13947,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3f23fcee6814b4e9747fea84bcce04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 7633038961571893458}
-  cam: {fileID: 1774442891}
-  playerSpeed: 6
-  turnSmoothTime: 0.1
-  jumpHeight: 15
-  gravityValue: -9.81
+  runSpeed: 5
+  leftrightSpeed: 4
+  isJumping: 0
+  comingDown: 0
+  playerObject: {fileID: 0}
 --- !u!1001 &1371851179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17730,6 +17745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
@@ -18845,6 +18864,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_Name
       value: Terrain_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dcf51a1e867a87e4596f1c757cbdb947, type: 3}
       propertyPath: m_LocalScale.x
@@ -24071,12 +24094,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3f23fcee6814b4e9747fea84bcce04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 7633038961571893458}
-  cam: {fileID: 1774442891}
-  playerSpeed: 6
-  turnSmoothTime: 0.1
-  jumpHeight: 15
-  gravityValue: -9.81
+  runSpeed: 5
+  leftrightSpeed: 4
+  isJumping: 0
+  comingDown: 0
+  playerObject: {fileID: 0}
 --- !u!4 &7635188405239820801
 Transform:
   m_ObjectHideFlags: 0
