@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-
 public class CharacterMove : MonoBehaviour
 {
     public float moveSpeed = 3.0f;
@@ -24,8 +22,6 @@ public class CharacterMove : MonoBehaviour
         canMove = true; 
         playerObject.GetComponent<Animator>().Play("Run 0");
         StartCoroutine(ConstantRun());
-
-
     }
 
     void Update()
@@ -58,11 +54,6 @@ public class CharacterMove : MonoBehaviour
 
         }
     }
-
-    
-        
-    
-
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
