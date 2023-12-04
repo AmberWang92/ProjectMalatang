@@ -19,6 +19,7 @@ public class CameraFollowLevelOne : MonoBehaviour
 
             transform.LookAt(target); 
         }
+        Debug.Log("Camera Rotation: " + transform.rotation.eulerAngles);
     }
 }
 
