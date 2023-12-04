@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;
+    public float moveSpeed = 3.0f;
     public float jumpForce = 10.0f;
 
     private Rigidbody rb;
@@ -38,9 +38,12 @@ public class CharacterMove : MonoBehaviour
     {
         if (canMove)
         {
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            moveDirection = new Vector3(horizontalInput, 0.0f, 1.0f).normalized;
+
             if (isGrounded && !isJumping)
             {
-                rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z) * moveSpeed;
+                rb.velocity = moveDirection * moveSpeed;
             }
         }
             
@@ -55,6 +58,10 @@ public class CharacterMove : MonoBehaviour
 
         }
     }
+
+    
+        
+    
 
     void Jump()
     {
