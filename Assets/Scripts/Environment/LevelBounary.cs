@@ -9,10 +9,6 @@ public class LevelBounary : MonoBehaviour
     public float internalLfet;
     public float internalRfet;
 
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
