@@ -14,12 +14,18 @@ public class CharacterMove : MonoBehaviour
     private bool isGrounded = true;
     static public bool canMove = false;
     public GameObject playerObject;
+    private bool isJumping = false;
+    private Vector3 moveDirection = Vector3.forward;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+        canMove = true; 
+        playerObject.GetComponent<Animator>().Play("Run 0");
+        StartCoroutine(ConstantRun());
+
+
     }
 
     void Update()
@@ -30,11 +36,14 @@ public class CharacterMove : MonoBehaviour
 
     void MovePlayer()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
-
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput).normalized * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(transform.position + movement);
+        if (canMove)
+        {
+            if (isGrounded && !isJumping)
+            {
+                rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z) * moveSpeed;
+            }
+        }
+            
     }
 
     void CheckJump()
@@ -51,7 +60,16 @@ public class CharacterMove : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
-       
+        StartCoroutine(JumpSequence());
+
+    }
+    IEnumerator JumpSequence()
+    {
+        yield return new WaitForSeconds(0.45f);
+        isJumping = true;
+        yield return new WaitForSeconds(0.45f);
+        isJumping = false;
+        playerObject.GetComponent<Animator>().Play("Run 0");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -61,15 +79,13 @@ public class CharacterMove : MonoBehaviour
             isGrounded = true;
         }
     }
-    IEnumerator AddHorizontalForce()
-    {
-        yield return new WaitForSeconds(0.1f); 
 
-        if (canMove)
-        {
-            rb.AddForce(transform.forward * moveSpeed * 0.5f, ForceMode.Impulse); 
-        }
+    IEnumerator ConstantRun()
+    {
+        yield return new WaitForSeconds(0.1f);
+        rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z) * moveSpeed;
     }
+
 }
 
 
