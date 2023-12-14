@@ -7,22 +7,22 @@ public class PlayerInventory : MonoBehaviour
     private List<string> collectedItems = new List<string>();
 
     public ItemSlot[] itemSlot;
-    
+
     public void AddItem(string itemName)
     {
-        Debug.Log("itemSlot Length: " + itemSlot.Length);
+        //Debug.Log("itemSlot Length: " + itemSlot.Length);
         for (int i = 0; i < itemSlot.Length; i++)
         {
-          
+
             if (!itemSlot[i].isFull)
             {
-              
+
                 collectedItems.Add(itemName);
 
-               
+
                 itemSlot[i].AddItem(itemName);
 
-                
+
                 counteringridients.instance.IncreaseIngr(1);
                 return;
             }
@@ -31,7 +31,6 @@ public class PlayerInventory : MonoBehaviour
 
     public bool HasItem(string itemName)
     {
-        Debug.Log("collected items: " + collectedItems);
         return collectedItems.Contains(itemName);
     }
 

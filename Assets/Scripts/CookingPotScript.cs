@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CookingPotScript : MonoBehaviour
 {
-    public List<string> requiredIngredients;
+    [SerializeField] private List<string> requiredIngredients;
 
     [SerializeField]
     private GameObject fullMalatangModel;

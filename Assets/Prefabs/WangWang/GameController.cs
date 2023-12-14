@@ -4,7 +4,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public CookingPotScript cookingPot;
+    [SerializeField] CookingPotScript cookingPot;
     private float gameTime = 30f; // Total game time in seconds
     private bool isGameOver = false;
     private bool isGameWon = false;

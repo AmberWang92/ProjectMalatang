@@ -12,23 +12,19 @@ public class Collectible : MonoBehaviour
 
             if (playerInventory != null)
             {
-                Debug.Log("Collecting item: " + itemName);
+                //Debug.Log("Collecting item: " + itemName);
 
-            
                 playerInventory.AddItem(itemName);
 
-               
-                if (playerInventory.HasItem(itemName))
-                {
-                    Debug.Log("Item successfully added to the inventory: " + itemName);
-                }
-                else
-                {
-                    Debug.LogError("Failed to add item to the inventory: " + itemName);
-                }
+                // if (playerInventory.HasItem(itemName))
+                // {
+                //     Debug.Log("Item successfully added to the inventory: " + itemName);
+                // }
+                // else
+                // {
+                //     Debug.LogError("Failed to add item to the inventory: " + itemName);
+                // }
 
-              
-              
                 Destroy(gameObject);
             }
         }

@@ -3,31 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-
 public class CharacterMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController controller;
     public Transform cam;
+    private Transform platform;
 
     [Header("Movement Settings")]
-    public float playerSpeed = 6f;
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
+    [SerializeField] private float playerSpeed = 6f;
+    [SerializeField] private float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
 
     [Header("Jump Settings")]
-    public float jumpHeight = 1.0f;
-    public float gravityValue = -9.81f;
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -9.81f;
 
     private Vector3 playerVelocity;
     private bool playerIsGrounded;
 
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
 
     // Update is called once per frame
     void Update()
     {
-
         UpdateCharacter();
     }
 
@@ -73,5 +75,49 @@ public class CharacterMovement : MonoBehaviour
 
         }
     }
+
+    void FixedUpdate()
+    {
+        if (platform != null && controller.isGrounded)
+        {
+            // Move the character along with the platform by updating its position
+            controller.Move(platform.position - transform.position);
+        }
+
+        // Other movement logic for the character...
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("MovingPlatform"))
+        {
+            if (platform == null)
+            {
+                platform = hit.transform;
+                transform.SetParent(platform);
+            }
+        }
+        else
+        {
+            if (platform != null)
+            {
+                transform.SetParent(null);
+                platform = null;
+            }
+        }
+    }
+
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     Debug.Log("Jump out from platform!");
+    //     // if (other.CompareTag("MovingPlatform"))
+    //     // {
+    //     //     // Unparent the character from the moving platform when exiting its trigger area
+    //     //     transform.SetParent(null);
+    //     //     platform = null;
+    //     // }
+    // }
 }
+
 

@@ -23,7 +23,7 @@ public class counteringridients : MonoBehaviour
     {
         currentIngr += v;
         UpdateIngrText();
-        Debug.Log("Ingredients increased. Current count: " + currentIngr);
+        //Debug.Log("Ingredients increased. Current count: " + currentIngr);
     }
 
 
@@ -31,7 +31,7 @@ public class counteringridients : MonoBehaviour
     {
         currentIngr -= v;
         UpdateIngrText();
-        Debug.Log("Ingredients decreased. Current count: " + currentIngr);
+        //Debug.Log("Ingredients decreased. Current count: " + currentIngr);
     }
 
 

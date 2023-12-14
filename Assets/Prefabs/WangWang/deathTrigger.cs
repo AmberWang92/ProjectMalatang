@@ -2,34 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deathTrigger : MonoBehaviour
+class deathTrigger : MonoBehaviour
 {
-
-
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         Debug.Log("Player just died now!");
-    //         //Destroy(other.gameObject);
-    //         //RespawnCharacter();
-    //         //player.transform.position = respawn_point.transform.position;
-    //         GameObject myPlayer = other.gameObject;
-    //         myPlayer.GetComponent<CharacterController>().enabled = false;
-    //         myPlayer.transform.position = respawn_point.transform.position;
-    //         myPlayer.GetComponent<CharacterController>().enabled = true;
-
-    //     }
-    // }
-    // Function to respawn the character
-    // private void RespawnCharacter()
-    // {
-    //     // Call the RespawnMainCharacter method from the RespawnManager
-    //     myRespawnManager.RespawnMainCharacter();
-    //     // You might have additional logic here related to player death
-    // }
-
-
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private float respawnDelay = 3f; // Adjust the delay time as needed
 
