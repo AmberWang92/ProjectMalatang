@@ -8,13 +8,8 @@ public class GenerateLevel : MonoBehaviour
     public int zPos;
     public bool creatingSection = false;
     public int secNum;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
     void Update()
     {
         if (creatingSection == false)
