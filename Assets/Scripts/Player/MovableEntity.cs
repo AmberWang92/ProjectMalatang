@@ -16,5 +16,7 @@ public abstract class MovableEntity : MonoBehaviour
 
     protected abstract void Move();
 
+    public abstract void PerformAction();
+
 }
 

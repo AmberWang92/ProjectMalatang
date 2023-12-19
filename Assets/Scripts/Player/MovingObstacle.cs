@@ -8,11 +8,13 @@ public class MovingObstacle : MovableEntity
     public Transform pointBTransform;
     private Vector3 target;
 
+
     protected override void Start()
     {
-        base.Start();
-        target = pointBTransform.position;   
+        base.Start(); 
+        target = pointBTransform.position; 
     }
+
 
     protected override void Move()
     {
@@ -25,9 +27,13 @@ public class MovingObstacle : MovableEntity
         
         if (Vector3.Distance(transform.position, target) < 0.1f)
         {
-            
-            target = target == pointATransform.position ? pointBTransform.position : pointATransform.position;
+            PerformAction();
         }
+    }
+
+    public override void PerformAction()
+    {
+        target = target == pointATransform.position ? pointBTransform.position : pointATransform.position;
     }
 
     void FixedUpdate()

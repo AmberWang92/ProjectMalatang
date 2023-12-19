@@ -13,19 +13,11 @@ public class CharacterMoveLevelOne : MovableEntity
     protected override void Start()
     {
         base.Start();
-        canMove = true;
+    canMove = true;
         playerObject.GetComponent<Animator>().Play("Run 0");
-        StartCoroutine(ConstantRun());
+    StartCoroutine(ConstantRun());
     }
 
-    void Update()
-    {
-        if (canMove)
-        {
-            Move();
-            CheckJump();
-        }
-    }
 
     protected override void Move()
     {
@@ -35,6 +27,20 @@ public class CharacterMoveLevelOne : MovableEntity
         if (isGrounded && !isJumping)
         {
             rb.velocity = moveDirection * moveSpeed;
+        }
+    }
+
+    public override void PerformAction()
+    {
+        CheckJump();
+    }
+
+    void Update()
+    {
+        if (canMove)
+        {
+            Move();
+            PerformAction();
         }
     }
 
@@ -76,6 +82,7 @@ public class CharacterMoveLevelOne : MovableEntity
         yield return new WaitForSeconds(0.1f);
         rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z) * moveSpeed;
     }
+
 }
 
 
