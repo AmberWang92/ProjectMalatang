@@ -8,6 +8,7 @@ public class ObstacleCollision : MonoBehaviour
     public GameObject charMode1;
     public AudioSource crashSound;
     public GameObject mainCam;
+    public GameObject levelControl;
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,5 +17,6 @@ public class ObstacleCollision : MonoBehaviour
         charMode1.GetComponent<Animator>().Play("Stumble Backwards");
         crashSound.Play();
         mainCam.GetComponent<Animator>().enabled = true;
+        levelControl.GetComponent<EndRun>().enabled = true;
     }
 }

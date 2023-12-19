@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectFood : MonoBehaviour
-{
-    public AudioSource foodFX;
 
+public class CollectApple : CollectibleFood
+{
     private void OnTriggerEnter(Collider other)
     {
-        foodFX.Play();
+        base.Collect();
         CollectibleControl.appleCount += 1;
-        this.gameObject.SetActive(false);
     }
 }
+
