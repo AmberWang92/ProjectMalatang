@@ -6,8 +6,16 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private CharacterController controller;
+
     public Transform cam;
     private Transform platform;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource playerAudio;
+    public AudioClip jumpSound;
+
+    [Header("Particles Settings")]
+    public ParticleSystem jumpParticles;
 
     [Header("Movement Settings")]
     [SerializeField] private float playerSpeed = 6f;
@@ -23,6 +31,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
+        //playerRb = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
     }
 
@@ -50,6 +60,8 @@ public class CharacterMovement : MonoBehaviour
             if (playerIsGrounded)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+                jumpParticles.Play();
                 //Debug.Log("Jumping");
             }
         }

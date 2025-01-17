@@ -6,8 +6,7 @@ public class CookingPotScript : MonoBehaviour
 {
     [SerializeField] private List<string> requiredIngredients;
 
-    [SerializeField]
-    private GameObject fullMalatangModel;
+    [SerializeField] private GameObject fullMalatangModel;
 
     private bool isCooking = false;
 
@@ -50,6 +49,7 @@ public class CookingPotScript : MonoBehaviour
 
         if (playerInventory != null && HasIngredients(playerInventory))
         {
+            GetComponent<AudioSource>().Play();
             Debug.Log("Malatang is cooking!");
 
             // We remove all the ingredients from the player inventory
