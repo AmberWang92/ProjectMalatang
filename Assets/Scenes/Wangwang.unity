@@ -2725,6 +2725,8 @@ MonoBehaviour:
   cookingPot: {fileID: 850379478}
   playerInventory: {fileID: 1275649966}
   interactionDistance: 2
+  cookingText: {fileID: 2052467692}
+  collectingText: {fileID: 1463832724}
 --- !u!114 &850379478 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 219577391899403588, guid: db0db4e0bf91e459985f12de2ce515b2, type: 3}
@@ -6757,7 +6759,7 @@ Transform:
   m_GameObject: {fileID: 1838600829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -22.3, y: 0, z: 0}
   m_LocalScale: {x: 12.183088, y: 1, z: 8.163188}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7037,7 +7039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2052467691
 RectTransform:
   m_ObjectHideFlags: 0

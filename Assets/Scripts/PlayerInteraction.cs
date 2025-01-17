@@ -1,40 +1,37 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public CookingPotScript cookingPot;
     public PlayerInventory playerInventory;
+    private GameObject playerGameObject;
     public float interactionDistance = 2f;
+    public TMP_Text cookingText;
+    public TMP_Text collectingText;
+
+
+    void Start()
+    {
+        cookingText.enabled = false;
+        playerGameObject = GameObject.FindWithTag("Player");
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Vector3.Distance(playerGameObject.transform.position, cookingPot.transform.position) <= interactionDistance)
         {
-            TryInteractWithCookingPot();
-        }
-    }
+            cookingText.enabled = true;
+            collectingText.enabled = false;
 
-    void TryInteractWithCookingPot()
-    {
-
-        GameObject playerGameObject = GameObject.FindWithTag("Player");
-
-        if (playerGameObject != null)
-        {
-
-
-            if (Vector3.Distance(playerGameObject.transform.position, cookingPot.transform.position) <= interactionDistance)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                cookingPot.CookMalatang(playerInventory);
+
+                if (playerGameObject != null)
+                {
+                    cookingPot.CookMalatang(playerInventory);
+                }
             }
-            else
-            {
-                Debug.Log("Too far from the pot to interact.");
-            }
-        }
-        else
-        {
-            Debug.LogError("Player GameObject not found.");
         }
     }
 }
