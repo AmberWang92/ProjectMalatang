@@ -3,6 +3,13 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public string itemName;
+    //private AudioSource pickupSound;
+
+    void Start()
+    {
+        //pickupSound = GetComponent<AudioSource>();
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {

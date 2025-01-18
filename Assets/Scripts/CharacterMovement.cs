@@ -40,6 +40,11 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (platform != null && controller.isGrounded)
+        {
+            // Move the character along with the platform by updating its position
+            controller.Move(platform.position - transform.position);
+        }
         UpdateCharacter();
     }
 
@@ -47,6 +52,7 @@ public class CharacterMovement : MonoBehaviour
     private void UpdateCharacter()
     {
         playerIsGrounded = controller.isGrounded;
+        Debug.Log("playerIsGrounded: " + playerIsGrounded);
         if (playerIsGrounded)
         {
             playerVelocity.y = 0f;
@@ -57,12 +63,17 @@ public class CharacterMovement : MonoBehaviour
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump"))
         {
+            Debug.Log("Jumping");
             if (playerIsGrounded)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 playerAudio.PlayOneShot(jumpSound, 1.0f);
                 jumpParticles.Play();
                 //Debug.Log("Jumping");
+            }
+            else
+            {
+                Debug.Log("Not Jumping. Player is not grounded.");
             }
         }
 
@@ -86,17 +97,6 @@ public class CharacterMovement : MonoBehaviour
             controller.Move(moveDir.normalized * playerSpeed * Time.deltaTime);
 
         }
-    }
-
-    void FixedUpdate()
-    {
-        if (platform != null && controller.isGrounded)
-        {
-            // Move the character along with the platform by updating its position
-            controller.Move(platform.position - transform.position);
-        }
-
-        // Other movement logic for the character...
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
