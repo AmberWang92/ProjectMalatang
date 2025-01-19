@@ -52,7 +52,6 @@ public class CharacterMovement : MonoBehaviour
     private void UpdateCharacter()
     {
         playerIsGrounded = controller.isGrounded;
-        Debug.Log("playerIsGrounded: " + playerIsGrounded);
         if (playerIsGrounded)
         {
             playerVelocity.y = 0f;
