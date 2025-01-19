@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using TMPro;
 
 public class CookingPotScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CookingPotScript : MonoBehaviour
     [SerializeField] private GameObject fullMalatangModel;
 
     private bool isCooking = false;
+    public TMP_Text congratulationsText;
 
     public bool HasIngredients(PlayerInventory playerInventory)
     {
@@ -50,6 +52,8 @@ public class CookingPotScript : MonoBehaviour
         if (playerInventory != null && HasIngredients(playerInventory))
         {
             GetComponent<AudioSource>().Play();
+            congratulationsText.enabled = true;
+
             Debug.Log("Malatang is cooking!");
 
             // We remove all the ingredients from the player inventory
