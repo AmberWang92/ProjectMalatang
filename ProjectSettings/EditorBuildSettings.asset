@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Wangwang.unity
+    guid: 400d6bfca5d78437fa0d97fd57477a7c
   m_configObjects: {}
